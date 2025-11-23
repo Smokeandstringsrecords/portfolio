@@ -17,7 +17,7 @@
         <a href="../index.html">Home</a>
         <a href="../about/index.html">About</a>
         <a href="../releases/index.html">Releases</a>
-        <a href="../covers/index.html">Covers</a>
+        <a href="../follow/index.html">Follow Me!</a>
         <a href="contact.html" aria-current="page">Connect</a>
       </nav>
     </div>
@@ -29,83 +29,85 @@
         <div class="eyebrow animate-up">Get in touch</div>
         <h1 class="animate-up" style="--delay:120ms">Contact Us!</h1>
         <p class="lead animate-up" style="--delay:200ms">For collabs, bookings, or just a hello — leave a message and I'll get back to you.</p>
-
-        <div class="buttons animate-up" style="--delay:300ms">
-          <a class="btn primary white" href="mailto:hello@Shivam.com">✉️ Email Me</a>
-          <a class="btn secondary white" href="#contact-form">Send a Message</a>
-        </div>
       </div>
     </section>
 
-    <section id="contact-form" class="section fade-in">
-      <div class="two-col">
-        <div class="contact">
-          <h3>Contact Form</h3>
-          <p class="subtle">Fill the form below — keep it short and sweet. I usually reply within a few days.</p>
+   <!-- add this to the <head> of your contact page -->
+<link rel="stylesheet" href="contact-section.css">
 
-          <!-- Plain accessible form; replace action with backend endpoint if available -->
-          <form class="form" action="#" method="post" novalidate>
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" required placeholder="Your name" />
+<!-- contact section -->
+<section class="contact-panel" aria-label="Contact Smoke & Strings">
+  <!-- decorative art (uses your uploaded file path) -->
+  <img class="contact-panel__art" src="/mnt/data/07c710b9-6d5f-4227-936e-acfc60bfb2f0.png" alt="" />
 
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required placeholder="you@domain.com" />
+  <div class="contact-grid">
 
-            <label for="subject">Subject</label>
-            <input id="subject" name="subject" type="text" placeholder="Booking / Collab / Hello" />
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="6" required placeholder="Tell me a little about it..."></textarea>
-
-            <label for="file" class="muted">Attach file (optional)</label>
-            <input id="file" name="file" type="file" accept="image/*,audio/*,.pdf" />
-
-            <div class="form-actions">
-              <button type="submit" class="btn primary">Send Message</button>
-              <button type="reset" class="btn secondary">Reset</button>
-            </div>
-
-            <p class="subtle small">If the form doesn't work, email me directly at <a href="mailto:hello@Shivam.com">hello@Shivam.com</a></p>
-          </form>
+    <!-- Left column -->
+    <div>
+      <!-- Email support -->
+      <div class="contact-block">
+        <div class="contact-block__icon">📧</div>
+        <div class="contact-block__content">
+          <h3>Email Support</h3>
+          <p>For order issues, download problems, or general inquiries — drop us an email and we’ll reply within 24–48 hours.</p>
+          <a class="btn btn--email" href="mailto:hello@smokeandstrings.example">Email Us</a>
         </div>
+      </div>
 
-        <aside class="contact-info" aria-label="Contact details">
-          <h3>Contact Details</h3>
-          <p>Email: <a href="mailto:bookings@shivammadaan.com">Shivam@smokeandstrings.in</a></p>
-          <p>Management: Smoke & Strings Records</p>
+      <!-- Chat / WhatsApp -->
+      <div class="contact-block" style="margin-top:18px;">
+        <div class="contact-block__icon">💬</div>
+        <div class="contact-block__content">
+          <h3>Chat Support</h3>
+          <p>Connect with us directly on WhatsApp for quick help and order updates.</p>
+          <a class="btn btn--whatsapp" href="https://wa.me/919999999999" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+      </div>
 
-          <h4 style="margin-top:18px">Social</h4>
-          <div class="social-grid compact">
-            <a class="social-card social-instagram" href="https://instagram.com/Shivambanhotraa" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a class="social-card social-youtube" href="https://youtube.com/ShivamBanhotra" target="_blank" rel="noopener noreferrer">YouTube</a>
-            <a class="social-card social-spotify" href="https://open.spotify.com/artist/your-artist-id" target="_blank" rel="noopener noreferrer">Spotify</a>
-            <a class="social-card social-applemusic" href="https://music.apple.com/artist/your-artist-id" target="_blank" rel="noopener noreferrer">Apple Music</a>
+      <!-- Social media -->
+      <div class="contact-block" style="margin-top:18px;">
+        <div class="contact-block__icon">📱</div>
+        <div class="contact-block__content">
+          <h3>Social Media</h3>
+          <p style="margin:0 0 8px 0;">Follow or message us on socials:</p>
+          <div class="social-row">
+            <a class="social-pill pill--ig" href="https://www.instagram.com/smokeandstrings" target="_blank" rel="noopener">Instagram</a>
+            <a class="social-pill pill--yt" href="https://www.youtube.com/@smokeandstrings" target="_blank" rel="noopener">YouTube</a>
+            <a class="social-pill pill--fb" href="https://www.facebook.com/smokeandstrings" target="_blank" rel="noopener">Facebook</a>
           </div>
-
-          <h4 style="margin-top:18px">Visit / Mail</h4>
-          <p class="muted">Smoke & Strings Records<br>
-          12 Music Lane<br>
-          New Delhi, India</p>
-
-          <h4 style="margin-top:18px">Phone</h4>
-          <p class="muted">+91 98XXXXXXX (for promoters & press only)</p>
-
-          <div style="margin-top:18px">
-            <a class="btn secondary white" href="../index.html">Back to Home</a>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section fade-in">
-      <div class="center">
-        <h3>Map</h3>
-        <!-- lightweight map embed (replace src with your Google Maps share link) -->
-        <div class="map-frame" aria-hidden="true">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d..." width="100%" height="240" style="border:0;border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- Right column -->
+    <div>
+      <div class="contact-block">
+        <div class="contact-block__icon">📍</div>
+        <div class="contact-block__content">
+          <h3>Business Address</h3>
+          <div class="address">
+            <strong>Smoke and Strings</strong><br>
+            Shalimar Bagh, Delhi<br>
+            New Delhi – 110088
+            <small>(For legal purposes or digital receipts only)</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Optional extra: opening hours or support notes -->
+      <div class="contact-block" style="margin-top:18px;">
+        <div class="contact-block__icon">⏰</div>
+        <div class="contact-block__content">
+          <h3>Support Hours</h3>
+          <p>Mon–Fri, 10:00 — 18:00 IST. Messages received outside these hours will be processed next business day.</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.62177422676!2d77.14892307409738!3d28.70095868097268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d03196697b059%3A0xa2e3b69ba07e2830!2sThe%20Eclipse%20Studios!5e0!3m2!1sen!2sin!4v1763875620582!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
   </main>
 
   <!-- Footer (matches homepage) -->
