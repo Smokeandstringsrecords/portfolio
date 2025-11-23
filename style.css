@@ -461,3 +461,208 @@ footer{padding:60px 20px;text-align:center;color:var(--muted)}
   .contact-block__icon { width: 40px; height: 40px; font-size: 20px; border-radius: 10px; }
   .btn, .social-pill { min-height: 44px; padding: 10px 14px; font-size: 14px; }
 }
+/* ===============================
+  /* ===============================
+   Liquid Glass Release Card (Extra Small)
+================================== */
+
+.release-card {
+  position: relative;
+  display: flex;
+  gap: clamp(10px, 1.2vw, 20px);
+  align-items: center;
+  width: 100%;
+  padding: 14px; /* much smaller */
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 30px rgba(2, 3, 5, 0.45),
+              inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+/* Smaller reflections */
+.release-card::before,
+.release-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.release-card::before {
+  top: -30%;
+  left: -15%;
+  right: -15%;
+  height: 35%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
+  filter: blur(18px);
+  opacity: 0.10;
+  transform: rotate(-6deg);
+}
+
+.release-card::after {
+  bottom: -30%;
+  left: -15%;
+  right: -15%;
+  height: 35%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+  filter: blur(14px);
+  opacity: 0.06;
+}
+
+/* Inner rim */
+.release-card-rim {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 -14px 22px rgba(0,0,0,0.4),
+              inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+/* Left Cover (smaller) */
+.release-cover {
+  width: 140px; /* reduced again */
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.release-cover img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 5px 14px rgba(0,0,0,0.4);
+}
+
+.release-cover figcaption {
+  font-size: 14px;
+  color: #bbbbbb;
+}
+
+/* Right Meta (smaller text) */
+.release-meta {
+  flex: 1;
+}
+
+.release-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(16px, 2.2vw, 26px); /* smaller */
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.release-title .artist { font-weight: 700; }
+
+.release-play {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.1);
+  color: #ff78c7;
+}
+
+.release-subtitle {
+  color: #ff86c6;
+  font-size: 14px; /* Smaller */
+  margin-bottom: 12px;
+}
+
+/* Even Smaller Buttons */
+.release-platforms {
+  display: flex;
+  gap: 8px;             /* smaller gap */
+  flex-wrap: wrap;
+}
+
+.release-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;              /* reduced spacing */
+  padding: 6px 12px;     /* smaller padding */
+  border-radius: 8px;    /* smaller corners */
+  font-weight: 700;
+  font-size: 13px;       /* reduced text size */
+  text-decoration: none;
+  color: #fff;
+  min-width: 130px;      /* smaller width */
+  transition: transform .12s ease, filter .12s ease;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.35);
+}
+
+.release-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.05);
+}
+
+.release-btn:active {
+  transform: translateY(0px);
+}
+
+/* Smaller brand icon */
+.release-btn .brand {
+  width: 18px;          /* smaller circle */
+  height: 18px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: rgba(255,255,255,0.9);
+  color: black;
+  font-size: 10px;      /* reduced icon size */
+}
+
+/* Brand colors */
+.release-btn.spotify {
+  background: linear-gradient(180deg, #2ad06b, #19a859);
+  color: #03220f;
+}
+
+.release-btn.apple {
+  background: linear-gradient(180deg, #ff7a7f, #ff4a55);
+}
+
+.release-btn.youtube {
+  background: linear-gradient(180deg, #ff4545, #d90000);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .release-btn {
+    width: 100%;
+    min-width: auto;
+    justify-content: center;
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .release-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 14px;
+  }
+  .release-cover {
+    width: 120px;
+    align-self: center;
+  }
+  .release-platforms {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .release-btn {
+    width: 100%;
+    min-width: auto;
+  }
+}
