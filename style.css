@@ -1,50 +1,256 @@
+/* style.css - dark-only, animations, and updated buttons */
+
+/* Dark theme variables (default; light mode removed) */
 :root{
---bg: #0b0b0b;
---card: #161616;
---muted: #bdbdbd;
---accent: #ff4b7d;
---green: #1db954;
+  --max-width:1200px;
+  --bg: #07070a;
+  --paper: #0f1114;
+  --muted: #9a9aa2;
+  --text: #eaeaea;
+  --accent: #f5f5f8;
+  --soft: #0e0f12;
+  --card-radius: 14px;
+  --transition: 260ms cubic-bezier(.2,.9,.2,1);
+  --shadow: 0 8px 24px rgba(2,4,8,0.6);
+  --glass: rgba(10,10,12,0.6);
+  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
+
+/* Reset & base */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-margin:0;
-font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-background:var(--bg);
-color:#eee;
--webkit-font-smoothing:antialiased;
-}
-.nav{background:#0e0e0e;border-bottom:1px solid rgba(255,255,255,0.03)}
-.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px}
-.brand{font-weight:700}
-.nav-links a{color:#ddd;margin-right:12px;text-decoration:none;font-size:13px}
-.container{max-width:900px;margin:40px auto;padding:0 20px}
-.hero{display:grid;grid-template-columns:1fr;gap:30px}
-.profile-card{background:var(--card);padding:34px;border-radius:10px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
-.avatar{width:120px;height:120px;border-radius:999px;border:4px solid #7c2b3b;object-fit:cover;margin:-70px auto 10px;display:block}
-.profile-card h1{margin:6px 0 6px;font-size:28px}
-.sub{color:var(--muted);font-size:14px;margin:4px 0}
-.quote{font-style:italic;color:#cfcfcf;max-width:640px;margin:12px auto}
-.email{color:var(--muted);font-size:14px}
-.cta-row{display:flex;gap:10px;justify-content:center;margin-top:14px}
-.btn{display:inline-block;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:600}
-.btn.spotify{background:var(--green);color:#fff}
-.btn.releases{background:#333;color:#fff}
-.btn.instagram{background:var(--accent);color:#fff}
-.about-card{background:var(--card);padding:26px;border-radius:10px;text-align:center}
-.about-card h2{color:var(--accent);margin-top:6px}
-.releases{margin-top:40px}
-.release-card{max-width:600px;margin:18px auto;text-align:center}
-.small{color:var(--muted);font-size:13px}
-.spotify-embed{display:flex;justify-content:center;margin-top:16px}
-footer{margin-top:60px;text-align:center;color:var(--muted)}
-
-
-@media(min-width:900px){
-.hero{grid-template-columns:1fr;}
+  margin:0;
+  background:linear-gradient(180deg,var(--bg), #050507);
+  color:var(--text);
+  line-height:1.6;
+  transition:background var(--transition), color var(--transition);
+  overflow-x:hidden;
 }
 
+/* subtle fade up animation helpers */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.animate-up {
+  opacity:0;
+  animation: fadeUp 560ms var(--delay, 0ms) cubic-bezier(.2,.9,.2,1) forwards;
+}
 
-@media(min-width:1100px){
-.hero{grid-template-columns:1fr;}
+/* Section reveal (used by JS observer too) */
+.fade-in{opacity:0;transform:translateY(8px);transition:opacity 520ms var(--delay,0ms) cubic-bezier(.2,.9,.2,1), transform 520ms var(--delay,0ms) cubic-bezier(.2,.9,.2,1)}
+.fade-in.is-visible{opacity:1;transform:translateY(0)}
+
+/* Header */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(10,10,12,0.65), rgba(10,10,12,0.55));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  animation: dropIn 420ms ease;
+}
+@keyframes dropIn { from { transform:translateY(-8px); opacity:0 } to { transform:none; opacity:1 } }
+
+.nav{
+  max-width:var(--max-width);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 28px;
+}
+.brand{font-weight:700;letter-spacing:2px;color:var(--accent)}
+.nav-right{display:flex;gap:20px;align-items:center}
+.nav a{
+  color:var(--text);
+  text-decoration:none;
+  padding:6px 4px;
+  transition:opacity var(--transition), transform 220ms ease;
+  font-size:15px;
+}
+.nav a:hover{opacity:0.88; transform:translateY(-2px)}
+
+/* Hero */
+.hero{
+  height:70vh;
+  min-height:480px;
+  background-image: url('assets/Shivambackground.jpg');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(4,4,6,0.55), rgba(2,2,3,0.8));
+}
+.hero-inner{
+  position:relative;
+  color: #fff;
+  text-align:center;
+  max-width:820px;
+  padding:40px;
+  z-index:2;
+}
+
+/* Buttons - white background for Listen Now & View Releases */
+.btn{
+  padding:12px 18px;border-radius:10px;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:10px;font-weight:700;
+  transition:transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, opacity 220ms ease;
+  box-shadow: 0 6px 20px rgba(2,4,8,0.45);
+}
+.btn:hover{transform:translateY(-4px)}
+/* White button style (applies to Listen Now + View Releases) */
+.btn.white{
+  background:#ffffff;
+  color:#000000;
+  border:1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 30px rgba(2,4,8,0.55);
+}
+/* Keep other primary/secondary styles for other uses */
+.btn.primary{background:transparent;color:var(--accent)}
+.btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.06)}
+
+/* Section base */
+.section{max-width:var(--max-width);margin:60px auto;padding:0 28px}
+.center{text-align:center}
+.subtle{color:var(--muted);max-width:700px;margin:8px auto 0;font-size:15px}
+
+/* Two column */
+.two-col{display:grid;grid-template-columns:1fr 440px;gap:40px;align-items:center}
+.about p{color:var(--muted);font-size:16px}
+.about h3{margin-bottom:14px}
+.about-img{width:100%;border-radius:var(--card-radius);overflow:hidden;box-shadow: 0 10px 30px rgba(2,4,8,0.6)}
+.about-img img{width:100%;display:block;transform:scale(1.02);transition:transform 700ms ease}
+.about-img img:hover{transform:scale(1.06)}
+
+/* Releases grid */
+.grid-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:36px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;overflow:hidden;transition:transform 320ms cubic-bezier(.2,.9,.2,1), box-shadow 320ms ease}
+.card:hover{transform:translateY(-10px) scale(1.02);box-shadow: 0 22px 50px rgba(2,4,8,0.6)}
+.card-img{height:300px;background-size:cover;background-position:center}
+.card-body{padding:18px}
+.card h4{margin:6px 0}
+.meta{color:var(--muted);font-size:14px}
+
+/* Covers */
+.covers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
+.cover-item{padding:22px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));display:flex;align-items:center;justify-content:space-between;transition:transform 260ms ease}
+.cover-item:hover{transform:translateY(-6px)}
+.cover-left{display:flex;gap:12px;align-items:center}
+.thumb{width:54px;height:54px;border-radius:50%;background:linear-gradient(180deg,#151517,#0b0b0d);display:flex;align-items:center;justify-content:center;font-weight:700}
+.title{font-weight:600}
+
+/* Social */
+.social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+.social-card{padding:22px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;align-items:center;gap:14px;transition:transform 260ms ease}
+.social-card:hover{transform:translateY(-6px)}
+.icon{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#111,#0b0b0d);font-weight:700}
+/* Make anchor-based social-card behave like the div-based cards */
+.social-grid a.social-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px;
+  border-radius: 14px;
+  transition: transform 260ms ease, box-shadow 260ms ease, opacity 180ms ease;
+  /* preserve the same subtle background by default */
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.02);
+}
+.social-grid a.social-card:hover { transform: translateY(-6px); opacity: 0.98; }
+
+/* Icon circle behaves the same but allow brand backgrounds */
+.social-grid .icon { width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; flex: 0 0 54px; }
+
+/* Brand-specific styles */
+.social-instagram .icon {
+  /* Instagram gradient (approx) */
+  background: radial-gradient(circle at 30% 30%, #f58529 0%, #dd2a7b 35%, #8134af 65%, #515bd4 100%);
+  box-shadow: 0 6px 16px rgba(133,60,150,0.28);
+}
+.social-youtube .icon {
+  background: #FF0000;
+  box-shadow: 0 6px 16px rgba(255,0,0,0.18);
+}
+.social-spotify .icon {
+  background: #1DB954;
+  box-shadow: 0 6px 16px rgba(29,185,84,0.16);
+}
+.social-applemusic .icon {
+  /* Apple Music: subtle deep/punchy gradient */
+  background: linear-gradient(135deg, #e94e77 0%, #6a82fb 100%);
+  box-shadow: 0 6px 16px rgba(106,130,251,0.12);
+}
+
+/* Ensure SVG icons are white and centered */
+.social-grid .icon svg { display:block; width:20px; height:20px; }
+
+/* Slightly bolder titles on social cards */
+.social-grid .title{ font-weight:700; color:var(--text); }
+.social-grid .meta{ color:var(--muted); font-size:14px; margin-top:4px; }
+
+/* Responsive: ensure grid adapts to different widths (4-column -> 2 or 1) */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 26px;
+}
+@media (max-width:1000px){
+  .social-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width:560px){
+  .social-grid { grid-template-columns: 1fr; }
+}
+
+
+/* Newsletter */
+.newsletter{display:flex;gap:14px;justify-content:center;margin:50px 0}
+.newsletter input{padding:14px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);min-width:360px;background:transparent;color:var(--text)}
+.newsletter button{background:var(--accent);color:#000;padding:12px 18px;border-radius:10px;border:none}
+
+/* Footer */
+footer{padding:60px 20px;text-align:center;color:var(--muted)}
+.footer-brand{font-weight:600;letter-spacing:2px;margin-bottom:12px}
+.footer-icons{margin:18px 0}
+
+/* compact spotify embeds layout */
+.compact-spotify-embeds {
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+  margin-top:28px;
+  margin-bottom:28px;
+}
+
+/* Responsive */
+@media (max-width:1100px){
+  .grid-cards{grid-template-columns:repeat(3,1fr)}
+  .two-col{grid-template-columns:1fr 360px}
+}
+@media (max-width:800px){
+  .grid-cards{grid-template-columns:repeat(2,1fr)}
+  .social-grid{grid-template-columns:repeat(2,1fr)}
+  .covers-grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .hero{height:56vh}
+  .nav{padding:12px}
+  .two-col{grid-template-columns:1fr}
+  .grid-cards{grid-template-columns:1fr}
+  .nav-right a{display:none}
 }

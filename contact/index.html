@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Shivam Madaan</title>
+
+  <!-- Link to same stylesheet as homepage -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav">
+      <div class="brand">Shivam Madaan</div>
+
+      <nav class="nav-right" Shivam-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About</a>
+        <a href="../releases/index.html">Releases</a>
+        <a href="../covers/index.html">Covers</a>
+        <a href="contact.html" aria-current="page">Connect</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" role="region" aria-label="Contact Hero">
+      <div class="hero-inner">
+        <div class="eyebrow animate-up">Get in touch</div>
+        <h1 class="animate-up" style="--delay:120ms">Contact Us!</h1>
+        <p class="lead animate-up" style="--delay:200ms">For collabs, bookings, or just a hello — leave a message and I'll get back to you.</p>
+
+        <div class="buttons animate-up" style="--delay:300ms">
+          <a class="btn primary white" href="mailto:hello@Shivam.com">✉️ Email Me</a>
+          <a class="btn secondary white" href="#contact-form">Send a Message</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-form" class="section fade-in">
+      <div class="two-col">
+        <div class="contact">
+          <h3>Contact Form</h3>
+          <p class="subtle">Fill the form below — keep it short and sweet. I usually reply within a few days.</p>
+
+          <!-- Plain accessible form; replace action with backend endpoint if available -->
+          <form class="form" action="#" method="post" novalidate>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required placeholder="Your name" />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@domain.com" />
+
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" placeholder="Booking / Collab / Hello" />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required placeholder="Tell me a little about it..."></textarea>
+
+            <label for="file" class="muted">Attach file (optional)</label>
+            <input id="file" name="file" type="file" accept="image/*,audio/*,.pdf" />
+
+            <div class="form-actions">
+              <button type="submit" class="btn primary">Send Message</button>
+              <button type="reset" class="btn secondary">Reset</button>
+            </div>
+
+            <p class="subtle small">If the form doesn't work, email me directly at <a href="mailto:hello@Shivam.com">hello@Shivam.com</a></p>
+          </form>
+        </div>
+
+        <aside class="contact-info" aria-label="Contact details">
+          <h3>Contact Details</h3>
+          <p>Email: <a href="mailto:bookings@shivammadaan.com">Shivam@smokeandstrings.in</a></p>
+          <p>Management: Smoke & Strings Records</p>
+
+          <h4 style="margin-top:18px">Social</h4>
+          <div class="social-grid compact">
+            <a class="social-card social-instagram" href="https://instagram.com/Shivambanhotraa" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="social-card social-youtube" href="https://youtube.com/ShivamBanhotra" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="social-card social-spotify" href="https://open.spotify.com/artist/your-artist-id" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a class="social-card social-applemusic" href="https://music.apple.com/artist/your-artist-id" target="_blank" rel="noopener noreferrer">Apple Music</a>
+          </div>
+
+          <h4 style="margin-top:18px">Visit / Mail</h4>
+          <p class="muted">Smoke & Strings Records<br>
+          12 Music Lane<br>
+          New Delhi, India</p>
+
+          <h4 style="margin-top:18px">Phone</h4>
+          <p class="muted">+91 98XXXXXXX (for promoters & press only)</p>
+
+          <div style="margin-top:18px">
+            <a class="btn secondary white" href="../index.html">Back to Home</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section fade-in">
+      <div class="center">
+        <h3>Map</h3>
+        <!-- lightweight map embed (replace src with your Google Maps share link) -->
+        <div class="map-frame" aria-hidden="true">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d..." width="100%" height="240" style="border:0;border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (matches homepage) -->
+  <footer>
+    <div class="footer-brand">Shivam Madaan</div>
+    <div class="footer-icons">
+      <a href="https://instagram.com/Shivambanhotraa" target="_blank" rel="noopener noreferrer" aria-label="Instagram link">Instagram</a> •
+      <a href="https://youtube.com/ShivamBanhotra" target="_blank" rel="noopener noreferrer" aria-label="YouTube link">YouTube</a> •
+      <a href="https://open.spotify.com/artist/your-artist-id" target="_blank" rel="noopener noreferrer" aria-label="Spotify link">Spotify</a> •
+      <a href="https://music.apple.com/artist/your-artist-id" target="_blank" rel="noopener noreferrer" aria-label="Apple Music link">Apple Music</a> •
+      <a href="mailto:hello@Shivam.com" aria-label="Email link">Email</a>
+    </div>
+    <div class="copyright">© 2025 Shivam Madaan. All rights reserved.</div>
+  </footer>
+
+  <!-- Link to script (same script.js used on homepage) -->
+  <script src="../script.js"></script>
+</body>
+</html>
